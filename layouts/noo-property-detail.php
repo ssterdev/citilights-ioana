@@ -175,7 +175,12 @@ $property_id = empty( $property_id ) ? get_the_ID() : $property_id;
 										'value_tag' => 'span',
 										'value_class' => 'col-sm-7 detail-field-value'
 									);
+								if ($id == "_area") {
 								noo_display_field( $field, $id, number_format($value), $args );
+								} else {
+									noo_display_field( $field, $id, number_format($value), $args );
+								
+								}
 							} ?>
 						</div>
 					</div>
