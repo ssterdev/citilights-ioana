@@ -108,12 +108,16 @@ class NooPropertyFeaturedWidget extends WP_Widget{
 								}
 							}
 							?>
-						</span>
+						</span>						
 						<?php //get_the_term_list( $this->id, 'product_cat') ?>
 						<h4><a href="<?php the_permalink()?>"><?php the_title() ?></a></h4>
 					</li>
-				<?php endwhile; ?>
-			</ul>
+				<?php endwhile; ?>	
+				<div class="vc_btn3-container vc_btn3-center vc_custom_1589798623859">
+					<a class="vc_general vc_btn3 vc_btn3-size-md vc_btn3-shape-rounded vc_btn3-style-modern vc_btn3-color-primary" href="<?php echo home_url(); ?>/no-sidebar3/">View more...</a>
+				</div>
+				
+			</ul>			
 		</div>
 		<?php
 		endif;
