@@ -1,0 +1,32 @@
+/**
+ * Style upload
+ */
+.noo-upload .noo-thumbnail-upload {
+  float: left;
+}
+.noo-upload .noo-thumbnail-upload img {
+  width: 150px;
+  height: 150px;
+}
+.noo-upload .noo-content-upload {
+  float: left;
+  margin-left: 15px;
+}
+.noo-upload .noo-content-upload .btn-upload {
+  background: #9A9999;
+  color: #fff;
+  display: block;
+  padding: 6px 15px;
+  cursor: pointer;
+  -webkit-transition: all .4s ease 0s;
+  -o-transition: all .4s ease 0s;
+  transition: all .4s ease 0s;
+}
+.noo-upload .noo-content-upload .btn-upload:hover {
+  background: #747373;
+}
+.noo-upload:after {
+  clear: both;
+  display: table;
+  content: '';
+}

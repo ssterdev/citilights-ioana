@@ -1,0 +1,428 @@
+@import "agent_dashboard.less";
+// style agent details
+//--------------------
+.noo-agent {
+	.content-title {
+		text-transform: uppercase;
+		float: left;
+		margin-right: 30px;
+		margin-bottom: 0;
+		small {
+			display: block;
+			margin-top: 10px;
+			font-size: 70%;
+			font-style: italic;
+			text-transform: none;
+		}
+	}
+	.agent-social {
+		a{background: #eee;
+			border-radius: 50%;
+			margin: 0px 3px;
+			color: #a5a5a5;
+			width: 25px;
+			height: 25px;
+			line-height: 25px;
+			text-align: center;
+			&:hover {
+				background: @brand-primary;
+				color: #fff;
+			}
+		}
+	}
+	.agent-info {
+		float: left;
+		margin: @grid-gutter-width 0;
+		width: 100%;
+		.content-featured {
+			width: 50%;
+			float: left;
+			margin: 0 @grid-gutter-width 20px 0;
+			@media (max-width:@screen-xs-max) {
+				width: 100%;
+				margin: 0 0 20px 0;
+			}
+		}
+		.agent-detail {
+		}
+		.agent-detail-title {
+			font-weight: 300;
+		}
+		.agent-detail-info {
+			line-height: 30px;
+			i {
+				font-size: @font-size-base;
+				width: 20px;
+				height: 20px;
+				float: left;
+				margin-top: 8px;
+    			padding-left: 1px;
+			}
+			span {
+				font-weight: bold;
+				width: 80px;
+				float: left;
+			}
+		}
+		.agent-desc {
+			margin: @grid-gutter-width 0;
+		}
+	}
+	.conact-agent {
+		.content-title {
+			margin-bottom: @grid-gutter-width;
+		}
+		.form-control {
+			padding: 4px 8px;
+			height: 40px;
+		}
+		textarea.form-control {
+			height: auto;
+		}
+		.form-group {
+			margin-bottom: @grid-gutter-width;
+		}
+		.form-group.message {
+			margin-bottom: (@grid-gutter-width / 2);
+		}
+		.btn {
+			width: 100%;
+			text-transform: uppercase;
+			padding: 10px 0;
+			font-weight: bold;
+			font-size: @font-size-large;
+			margin-bottom: @grid-gutter-width;
+		}
+	}
+	// style property
+	.properties-header {
+		.page-title {
+			font-size: @font-size-base + 8;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+	}
+}
+// List Agents
+//----------------------
+.agents {
+	position: relative;
+	.clearfix();
+	&.grid {
+		&:extend(.clearfix all);
+		.agents-header {
+			.page-title {
+				font-weight: 900;
+				text-transform: uppercase;
+				font-size: @font-size-base + 8;
+			}
+		}
+		.noo_agent {
+			margin: 0 0 @grid-gutter-width 0;
+			border-bottom: none;
+			.agent-title {
+				font-size: 18px;
+				font-weight: 400;
+				margin: 0;
+				padding: (@grid-gutter-width / 2) (@grid-gutter-width / 2);
+				background: #f9f9f9;
+			}
+			.agent-featured,
+			.agent-wrap {
+				height: 240px;
+				overflow: hidden;
+			}
+			.agent-featured {
+				width: 50%;
+				float: left;
+				position: relative;
+				.box-shadow(none);
+				.border-radius(@border-radius-base 0 0 @border-radius-base);
+				a {
+					height: 100%;
+				}
+				background-color: #f9f9f9;
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+				&:after {
+					content: '';
+					position: absolute;
+					bottom: 100%;
+					right: 0px;
+					top: @grid-gutter-width;
+					border-top: 0px solid transparent;
+					border-right: 17px solid #f9f9f9;
+					border-bottom: 17px solid transparent;
+					z-index: 99;
+				}
+			}
+			.agent-wrap {
+				width: 50%;
+				float: left;
+				background: #f9f9f9;
+				.border-radius(0 @border-radius-base @border-radius-base 0);
+				position: relative;
+				.agent-summary {
+				}
+				.agent-desc {
+					position: absolute;
+					bottom: 0;
+					width: 100%;
+					border-top: 1px solid #ececec;
+					background: #f9f9f9;
+					.agent-social {
+						padding: 10px;
+						a {
+							background: #eee;
+							border-radius: 50%;
+							margin: 0px 3px;
+							color: #a5a5a5;
+							width: 25px;
+							height: 25px;
+							line-height: 25px;
+							text-align: center;
+							&:hover {
+								background: @brand-primary;
+								color: #fff;
+							}
+						}
+					}
+					.agent-action {
+						border-top: 1px solid #fff;
+						a {
+							&:extend(.btn all);
+							&:extend(.btn-secondary all);
+							border-radius: 0;
+							width: 100%;
+							font-weight: bold;
+							display: inline-block;
+						    white-space: normal;
+						}
+					}
+				}
+				.agent-info {
+					line-height: 30px;
+					font-size: @font-size-small;
+				    padding: 10px 15px;
+					div {
+						overflow: hidden;
+						// display: inline-table;
+						display: block;
+						white-space: nowrap;
+						@media screen and (min-width: @screen-md) and (max-width: @screen-lg-min) {
+							display: block;
+						}
+					}
+					i {
+						font-size: @font-size-base;
+						width: 20px;
+						height: 20px;
+						float: left;
+						margin-top: 8px;
+					}
+				}
+			}
+			.agent-title {
+				font-size: 18px;
+				font-weight: 400;
+				margin: 0;
+				padding: @grid-gutter-width @grid-gutter-width 0;
+				background: #f9f9f9;
+			}
+		}
+
+		&.ava-top {
+			.noo_agent {
+				.agent-featured,
+				.agent-wrap {
+					width: 100%;
+					display: block;
+					height: auto;
+				}
+				.agent-featured {
+					max-height: 380px;
+					&:after {
+						border-right: 0;
+					}
+					.border-radius(@border-radius-base @border-radius-base 0 0);
+				}
+				.agent-wrap {
+					.border-radius(0 0 @border-radius-base @border-radius-base);
+					.agent-desc {
+						position: relative;
+					}
+				}
+			}
+		}
+
+		@media (max-width:@screen-sm-max) {
+			.ava-top();
+			.agent-wrap {
+				.agent-social {
+					a {
+						margin: 0 8px;
+					}
+				}
+			}
+		}
+
+		@media (min-width:@screen-md-min) {
+			body.page-fullwidth & {
+				.noo_agent.col-md-6 {
+					.agent-featured,
+					.agent-wrap {
+						height: 290px;
+					}
+				}
+			}
+		}
+
+		@media (max-width:@screen-xs-min) {
+			.noo_agent.col-xs-6 {
+				width: 100%;
+			}
+		}
+	}
+}
+.recent-agents {
+	position: relative;
+	.caroufredsel-wrap {
+		position: relative;
+		overflow: hidden;
+		height: 100%;
+		ul {
+			padding: 0;
+			li {
+				float: left;
+				padding: 0;
+				list-style: none;
+				display: block;
+			}
+		}
+		@media (max-width: @screen-xs-max) {
+			margin: 0;
+		}
+	}
+	.recent-agents-title {
+		h3 {
+			font-weight: 300;
+			margin: 0 80px 10px 0;
+			text-transform: uppercase;
+			min-height: 40px;
+			line-height: 40px;
+			font-size: 36px;
+		}
+	}
+	.recent-agents-style-2 {
+		h3 {
+			font-weight: bold;
+			margin: 10px 0;
+			text-transform: inherit;
+		}
+	}
+	.recent-agents-subtitle {
+		p {
+			margin-bottom: 40px;
+			color: grey;
+		}
+	}
+	.caroufredsel-next, .caroufredsel-prev {
+		display: inline-block;
+		height: 40px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		background: @brand-primary;
+		color: #fff;
+		width: 40px;
+		text-align: center;
+		line-height: 40px;
+		font-size: 24px;
+		.transition(0.4s);
+		&:hover {
+			background: darken(@brand-primary, 10%);
+		}
+	}
+	.caroufredsel-prev {
+		.add-icon-before("\f104", 0, 1);
+		right: 41px;
+	}
+	.caroufredsel-next {
+		.add-icon-before("\f105", 0, 1);
+	}
+	.noo_agent {
+		background: #fff;
+		//margin: 0 (@grid-gutter-width / 2);
+		margin: 0;
+		.agent-featured {
+			overflow: hidden;
+			max-height: 380px;
+			img {
+				width: 100%;
+				object-fit: cover;
+				height: 300px;
+				.transition(all 0.3s ease-in-out);
+			}
+		}
+		.agent-featured-2 {
+			overflow: hidden;
+			.content-thumb {
+				transition: all ease-in-out .5s;
+				img {
+					width: 100%;
+					object-fit: cover;
+					transition: all ease-in-out .75s;
+					height: 300px;
+				}
+
+			}
+
+		}
+		&:hover {
+			img {
+				transform: scale(1.1);
+			}
+		}
+		.agent-wrap {
+			text-align: center;
+			.agent-title {
+				font-size: @font-size-base + 2;
+				font-weight: 500;
+				margin: @grid-gutter-width 0 5px 0;
+			}
+			.agent-excerpt {
+				padding: (@grid-gutter-width /2) 20px;
+				height: 115px;
+				overflow: hidden;
+			}
+			.agent-social {
+				padding: 10px 20px 10px 20px;
+				border-top: 1px solid #ececec;
+				box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				a {
+					background: #eee;
+					border-radius: 50%;
+					margin: 0px 3px;
+					color: #a5a5a5;
+					width: 30px;
+					height: 30px;
+					line-height: 30px;
+					text-align: center;
+					&:hover {
+						background: @brand-primary;
+						color: #fff;
+					}
+				}
+			}
+		}
+		@media (max-width: @screen-xs-max) {
+			margin: 0;
+			padding: 0;
+		}
+	}
+}

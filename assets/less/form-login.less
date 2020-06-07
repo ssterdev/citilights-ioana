@@ -1,0 +1,171 @@
+/**
+ * Style form login
+ */
+.noo-box-register,
+#noo-forgot-password {
+	display: none;
+}
+#loginmodal {
+	background: fade(#000, 70%);
+	.modal-title {
+	    text-transform: uppercase;
+	    font-weight: 500;
+	    color: #313131;
+	}
+}
+#noo-form-title {
+
+}
+.modal-header {
+    background: #e5e5e5;
+    text-align: center;
+}
+.noo-box {
+	padding: 10px 25px;
+	h3 {
+	    margin: 0;
+	    text-align: center;
+	    padding: 5px 0 25px;
+	    font-size: 16px;
+	    color: #313131;
+	}
+	.noo-item {
+	    margin: 0 0 15px;
+	    input[type="text"],
+	    input[type="password"] {
+	    	padding: 20px;
+	    	&:focus {
+	    		.box-shadow(none);
+	    	}
+	    }
+	}
+	button {
+	    border: none;
+	    padding: 8px 60px;
+	    text-transform: uppercase;
+	    font-weight: 500;
+	    .transition(all .4s ease 0s);
+	    &:disabled {
+	    	background: #dadada;
+		    cursor: not-allowed;
+		    color: #fff;
+		    &:hover {
+			    color: #fff;
+		    }
+	    }
+	}
+	
+	.user_terms_register_label {
+		font-size: 14px;
+	}
+
+	.noo-item-checkbox {
+		padding: 0 0 15px 0;
+		input[type="checkbox"] {
+			margin: 0 15px 0 0;
+		}	
+	}
+	.noo-form-action {
+		padding: 25px 0;
+		text-align: center;
+	}
+	.loginalert {
+	    padding-bottom: 20px;
+        font-size: 14px;
+	    font-style: italic;
+	    text-align: center;
+	    &.error {
+	    	color: red;
+	    }
+	    &.success {
+	    	color: #5db53a;
+	    }
+	}
+}
+
+.login-links {
+    font-size: 14px;
+    display: block;
+    margin: 15px 0 0;
+}
+.modal-dialog {
+	max-width: 465px;
+}
+
+.forgot-password {
+    margin: 15px 0 0;
+	a {
+		// color: @secondary;
+		display: inline-block;
+		font-size: 14px;
+		&:before {
+			font-family: 'FontAwesome';
+			content: '\f059';
+			margin-right: 6px;
+		}
+		&:hover {
+			// color: darken(@secondary, 15%);
+		}
+	}
+}
+
+.notice-form-login {
+	display: none;
+}
+
+.noo-box-forgot {
+	.noo-title {
+		font-size: 23px;
+		text-transform: uppercase;
+	    font-weight: 500;
+	    color: #313131;
+	}
+	button {
+	    border: none;
+	    padding: 8px 60px;
+	    text-transform: uppercase;
+	    font-weight: 500;
+	    margin: 25px 0;
+	    .transition(all .4s ease 0s);
+	    &:disabled {
+	    	background: #dadada;
+		    cursor: not-allowed;
+	    }
+	}
+	.notice,
+	.error,
+	.success {
+		padding: 0 0 15px;
+	}
+	
+	.error{
+		color: red;
+	}
+
+	.success {
+		color: #50C058;
+	}
+}
+
+.shortcode-login {
+	padding: 0;
+	.noo-form-action {
+	    padding: 10px 0;
+	    button {
+    	    font-weight: bold;
+		    font-size: 24px;
+	        padding: 10px 16px;
+	    }
+	}
+	.logreg-title {
+		text-transform: none;
+	}
+	.noo-item-checkbox {
+	    padding: 0;
+	}
+	.forgot-password a{
+		&:before {
+			content: none;
+		}
+	}
+}

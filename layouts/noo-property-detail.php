@@ -1,0 +1,345 @@
+<?php 
+$current_user       = wp_get_current_user();
+$user_id            = $current_user->ID;
+$property_favorites = noo_get_page_link_by_template( 'property_favorites.php' );
+$property_id = empty( $property_id ) ? get_the_ID() : $property_id;
+
+	while ($query->have_posts()): $query->the_post(); global $post;
+	$is_favorites       = get_user_meta( $user_id, 'is_favorites', true );
+	$check_is_favorites = ( !empty( $is_favorites ) && in_array( get_the_ID(), $is_favorites ) ) ? true : false;
+	$class_favorites    = $check_is_favorites ? 'is_favorites' : 'add_favorites';
+	$text_favorites     = $check_is_favorites ? esc_html__( 'View favorites', 'noo' ) : esc_html__( 'Add to favorites', 'noo' );
+	$icon_favorites     = $check_is_favorites ? 'fa-heart' : 'fa-heart-o';
+
+	?>
+
+	<article id="post-<?php the_ID(); ?>" class="property">
+		<div class="property-title-wrap clearfix">
+			<h1 class="property-title">
+				<?php the_title(); ?>
+				<small><?php echo noo_get_post_meta(null,'_address')?></small>
+			</h1>
+			<?php re_property_social_share( get_the_id() ); ?>
+		</div>
+		<?php 
+		$gallery        = noo_get_post_meta( get_the_ID(), '_gallery', '' );
+		$gallery_ids    = explode(',',$gallery);
+		$gallery_ids    = array_filter($gallery_ids);
+		$featured_image = get_post_thumbnail_id();
+		
+		$floor_plan     = noo_get_post_meta( get_the_ID(), '_floor_plan', '' );
+		$floor_plan_ids = explode( ',', $floor_plan );
+		$floor_plan_ids = array_filter( $floor_plan_ids );
+
+
+		$_pdf_file     = noo_get_post_meta( get_the_ID(), '_pdf_file', '' );
+		$_pdf_file_ids = explode( ',', $_pdf_file );
+		$_pdf_file_ids = array_filter( $_pdf_file_ids );
+
+
+		$property_category     = get_the_term_list(get_the_ID(), 'property_category', '<span class="col-sm-7 detail-field-value type-value">', ', ', '</span>');
+		$property_status       = get_the_term_list(get_the_ID(), 'property_status', '<span class="col-sm-7 detail-field-value status-value">', ', ', '</span>');
+		$property_location     = get_the_term_list(get_the_ID(), 'property_location', '', ', ');
+		$property_sub_location = get_the_term_list(get_the_ID(), 'property_sub_location', '', ', ');
+		$property_price        = re_get_property_price_html( get_the_ID() );
+		$property_area         = trim( re_get_property_area_html( get_the_ID() ) );
+		$property_bedrooms     = noo_get_post_meta(get_the_ID(), '_bedrooms' );
+		$property_bathrooms    = noo_get_post_meta(get_the_ID(), '_bathrooms' );
+
+		if( !empty($featured_image) || !empty( $gallery_ids ) ) :
+		?>
+		    <div class="property-featured clearfix">
+		    	<div class="images">
+		    		<div class="caroufredsel-wrap">
+			    		<ul>
+				    		<?php 
+				    		if(!empty($featured_image) && empty( $gallery_ids )) :
+				    			$image = wp_get_attachment_image_src($featured_image,'full');
+				    		?>
+					    		<li>
+									<a class="noo-lightbox-item" data-lightbox-gallery="gallert_<?php the_ID()?>" href="<?php echo $image[0]?>"><?php echo get_the_post_thumbnail(get_the_ID(), 'full' ) ?></a>
+
+					    		</li>
+					    	<?php endif;?>
+					    	<?php if(!empty($gallery_ids)): ?>
+					    		<?php foreach ($gallery_ids as $gallery_id):
+					    			$gallery_image = wp_get_attachment_image_src($gallery_id,'full'); 
+					    			if( $gallery_image ) : ?>
+							    		<li>
+							    			<a class="noo-lightbox-item" data-lightbox-gallery="gallert_<?php the_ID()?>" href="<?php echo $gallery_image[0]?>"><?php echo wp_get_attachment_image( $gallery_id, 'full' ); ?></a>
+							    		</li>
+					    			<?php endif;?>
+					    		<?php endforeach;?>
+					    	<?php endif;?>
+			    		</ul>
+				    	<a class="slider-control prev-btn" role="button" href="#"><span class="slider-icon-prev"></span></a>
+				    	<a class="slider-control next-btn" role="button" href="#"><span class="slider-icon-next"></span></a>
+		    		</div>
+
+					<?php if( ( re_get_agent_setting('users_can_register', true) && !is_user_logged_in() ) || is_user_logged_in() ) : ?>
+		    			<div class="property-action favorites-property">
+						<i title="<?php echo esc_html( $text_favorites ); ?>" data-user="<?php echo $user_id; ?>" data-id="<?php echo get_the_ID(); ?>" data-action="favorites" data-status="<?php echo esc_attr( $class_favorites ); ?>" data-url="<?php echo esc_attr( $property_favorites ); ?>" class="property-action-button fa <?php echo esc_attr( $icon_favorites ); ?>" aria-hidden="true"></i>
+						</div>
+					<?php endif; ?>
+						
+		    	</div>
+		    	<?php if(!empty($gallery_ids)) : ?>
+			    	<div class="thumbnails">
+			    		<div class="thumbnails-wrap">
+				    		<ul>
+					    	<?php $i = 0; ?>
+				    		<?php if( !empty($featured_image) && empty( $gallery_ids )) : $i++;?>
+					    		<li>
+					    			<a data-rel="0" href="<?php echo $image[0]?>"><?php echo get_the_post_thumbnail(get_the_ID(), 'property-thumb') ?></a>
+					    		</li>
+					    	<?php endif; ?>
+				    		<?php foreach ($gallery_ids as $index => $gallery_id):
+				    			$thumbnail_image = wp_get_attachment_image($gallery_id, 'property-thumb'); 
+					    		if( !empty( $thumbnail_image ) ) : ?>
+						    		<li>
+						    			<a data-rel="<?php echo $i++; ?>" href="#"><?php echo $thumbnail_image; ?></a>
+						    		</li>
+				    			<?php endif;?>
+				    		<?php endforeach;?>
+				    		</ul>
+				    	</div>
+				    	<a class="caroufredsel-prev" href="#"></a>
+				    	<a class="caroufredsel-next" href="#"></a>
+			    	</div>
+		    	<?php endif;?>
+		    	<?php 
+				$_label = noo_get_post_meta(get_the_ID(),'_label');
+				if(!empty($_label) && ($property_label = get_term($_label, 'property_label'))):
+					$noo_property_label_colors = get_option('noo_property_label_colors');
+					$color 	= isset($noo_property_label_colors[$property_label->term_id]) ? $noo_property_label_colors[$property_label->term_id] : '';
+				?>
+					<span class="property-label" <?php echo (!empty($color) ? ' style="background-color:'.$color.'"':'')?>><?php echo $property_label->name?></span>
+				<?php endif;?>
+		    </div>
+		<?php endif;?>
+
+		<?php 
+			// Sub Property info
+			sub_listing_property_detail($property_id); 
+		?>
+
+		<div class="property-summary clearfix">
+			<div class="row">
+				<div class="property-detail col-md-4 col-sm-4">
+					<h4 class="property-detail-title"><?php _e('Property Detail','noo')?></h4>
+					<div class="property-detail-content">
+						<div class="detail-field row">
+							<?php if( !empty($property_category) ) : ?>
+								<span class="col-sm-5 detail-field-label type-label"><?php echo __('Type','noo')?></span>
+								<?php echo $property_category?>
+							<?php endif; ?>
+							<?php if( !empty($property_status) ) : ?>
+								<span class="col-sm-5 detail-field-label status-label"><?php echo __('Status','noo')?></span>
+								<?php echo $property_status?>
+							<?php endif; ?>
+							<?php if( !empty($property_location) ) : ?>
+								<span class="col-sm-5 detail-field-label location-label"><?php echo __('Location','noo')?></span>
+								<span class="col-sm-7 detail-field-value location-value"><?php echo $property_location?></span>
+							<?php endif; ?>
+							<?php if( !empty($property_sub_location) ) : ?>
+								<span class="col-sm-5 detail-field-label sub_location-label"><?php echo __('Sub Location','noo')?></span>
+								<span class="col-sm-7 detail-field-value sub_location-value"><?php echo $property_sub_location?></span>
+							<?php endif; ?>
+							<?php if( !empty($property_price) ) : ?>
+								<span class="col-sm-5 detail-field-label price-label"><?php echo __('Price','noo')?></span>
+								<span class="col-sm-7 detail-field-value price-value"><?php echo $property_price?></span>
+							<?php endif; ?>
+							<?php $custom_fields = re_get_property_custom_fields();
+								$property_id = get_the_ID();
+								if( function_exists('pll_get_post') ) $property_id = pll_get_post( $property_id );
+							?>
+							<?php foreach ((array)$custom_fields as $field) {
+								if( !isset( $field['name'] ) || empty( $field['name'] )) continue;
+								$field['type'] = isset( $field['type'] ) ? $field['type'] : 'text';
+								$id = re_property_custom_fields_name($field['name']);
+								if( isset( $field['is_default'] ) ) {
+									if( isset( $field['is_disabled'] ) && ($field['is_disabled'] == 'yes') )
+										continue;
+									if( isset( $field['is_tax'] ) )
+										continue;
+									$id = $field['name'];
+								}
+
+								$value = noo_get_post_meta($property_id,$id,null);
+								$args = array(
+										'label_tag' => 'span',
+										'label_class' => 'col-sm-5 detail-field-label',
+										'value_tag' => 'span',
+										'value_class' => 'col-sm-7 detail-field-value'
+									);
+								noo_display_field( $field, $id, $value, $args );
+							} ?>
+						</div>
+					</div>
+				</div>
+				<div class="property-desc col-md-8 col-sm-8">
+					<h4 class="property-detail-title"><?php _e('Property Description','noo')?></h4>
+					<div class="property-content">
+						<?php the_content();?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php if( !empty( $_pdf_file_ids ) ) :
+				echo '<div class="document-container">';
+				echo '<h4 class="document-title">' . esc_html__( 'Document', 'noo' ) . '</h4>';
+					echo '<div class="document-wrap noo-row">';
+					?>
+					<ul>
+						<?php foreach ( $_pdf_file_ids as $_pdf_file_id ) :
+			    			$pdf_file = wp_get_attachment_url( $_pdf_file_id ); 
+			    			
+			    			if( $pdf_file ) : ?>
+					    		<li>
+					    			<a href="<?php echo wp_get_attachment_url( $_pdf_file_id) ?>" target="_blank">
+					    				<?php echo basename(wp_get_attachment_url( $_pdf_file_id)); ?>
+				    				</a>
+				    				<i class="fa fa-download"></i>
+			    				</li>
+			    			<?php  endif;
+		    			endforeach; ?>
+		    		</ul>
+		    		<?php
+		    		echo '</div><!-- /.document-wrap -->';
+	    		echo '</div><!-- /.document-container -->';
+    		endif;
+    	?>
+
+		<?php $features = (array) re_get_property_feature_fields();
+		if( !empty( $features ) && is_array( $features ) ) : ?>
+		<div class="property-feature">
+			<h4 class="property-feature-title"><?php _e('Property Features','noo')?></h4>
+			<div class="property-feature-content">
+				<?php $show_no_feature = ( re_get_property_feature_setting('show_no_feature') == 'yes' ); ?>
+				<?php foreach ($features as $key => $feature) : ?>
+					<?php if(noo_get_post_meta(get_the_ID(),'_noo_property_feature_'.$key)) : ?>
+						<div class="has">
+							<i class="fa fa-check-circle"></i> <?php echo $feature; ?>
+						</div>
+					<?php elseif( $show_no_feature ) : ?>
+						<div class="no-has">
+							<i class="fa fa-times-circle"></i> <?php echo $feature; ?>
+						</div>
+					<?php endif; ?>
+				<?php endforeach;?>
+			</div>
+			
+			<?php 
+			additional_feature($property_id);
+			?>
+		</div>
+		<?php endif; ?>
+		<?php if($_video_embedded = noo_get_post_meta(get_the_ID(),'_video_embedded','')):?>
+			<div class="property-video hidden-print">
+				<h4 class="property-video-title"><?php _e('Property Video','noo')?></h4>
+				<div class="property-video-content">
+					<?php echo noo_get_video( $_video_embedded ); ?>
+				</div>
+			</div>
+		<?php endif;?>
+
+		<?php if($_virtual_tour = noo_get_post_meta(get_the_ID(),'_virtual_tour','')):?>
+			<div class="property-video hidden-print">
+				<h4 class="property-video-title"><?php _e('360° Virtual Tour','noo')?></h4>
+				<div class="property-video-content">
+					<?php echo htmlspecialchars_decode($_virtual_tour); ?>
+				</div>
+			</div>
+		<?php endif;?>
+		
+		<?php 
+			if( !empty( $floor_plan_ids ) ) :
+    			wp_enqueue_style( 'owlcarousel' );
+    			wp_enqueue_script( 'owlcarousel' );
+    			
+				echo '<div class="floor-plan-container">';
+
+					echo '<h4 class="floor-plan-title">' . esc_html__( 'Floor Plan', 'noo' ) . '</h4>';
+					echo '<div class="floor-plan-wrap noo-row">';
+
+	    			foreach ( $floor_plan_ids as $floor_plan_id ) :
+
+		    			$floor_plan_image = wp_get_attachment_image_src( $floor_plan_id, 'full' ); 
+		    			if( $floor_plan_image ) : ?>
+				    		
+			    			<a class="floor-plan-item noo-lightbox-item" data-lightbox-gallery="floor_plan_<?php the_ID()?>" href="<?php echo $floor_plan_image[0]?>">
+			    				<?php echo wp_get_attachment_image( $floor_plan_id, 'property-floor' ); ?>
+		    				</a>
+
+		    			<?php endif;
+
+		    		endforeach;
+
+		    		echo '</div><!-- /.floor-plan-wrap -->';
+
+	    		echo '</div><!-- /.floor-plan-container -->';
+
+    		endif;
+
+    	?>
+
+
+		<?php
+		$map_type = re_get_property_map_setting('map_type','');
+		if($map_type == "google"):
+			$latitude = noo_get_post_meta(get_the_ID(),'_noo_property_gmap_latitude');
+			$longitude = noo_get_post_meta(get_the_ID(),'_noo_property_gmap_longitude');
+			if( !empty( $latitude ) && !empty( $longitude ) ) :
+			?>
+				<div class="property-map">
+					<h4 class="property-map-title"><?php _e('Location on map','noo')?></h4>
+					<div class="property-map-content">
+						<div class="property-map-search">
+							<input placeholder="<?php echo __('Search your map','noo')?>" type="text" autocomplete="off" id="property_map_search_input">
+						</div>
+						<?php 
+						$property_category_terms          =   get_the_terms(get_the_ID(),'property_category' );
+						$property_category_marker = '';
+						if($property_category_terms && !is_wp_error($property_category_terms)){
+							$map_markers = get_option( 'noo_category_map_markers' );
+							foreach($property_category_terms as $category_term){
+								if(empty($category_term->slug))
+									continue;
+								$property_category = $category_term->slug;
+								if(isset($map_markers[$category_term->term_id]) && !empty($map_markers[$category_term->term_id])){
+									$property_category_marker = wp_get_attachment_url($map_markers[$category_term->term_id]);
+								}
+								break;
+							}
+						}
+						?>
+						<div id="property-map-<?php echo get_the_ID()?>" class="property-map-box" data-marker="<?php echo esc_attr($property_category_marker)?>" data-zoom="<?php echo esc_attr(noo_get_post_meta(get_the_ID(), '_noo_property_gmap_zoom', '16'))?>" data-latitude="<?php echo esc_attr($latitude)?>" data-longitude="<?php echo esc_attr($longitude)?>"></div>
+					</div>
+				</div>
+			<?php endif;
+		elseif($map_type == "bing"):
+			$latitude = noo_get_post_meta(get_the_ID(),'_noo_property_gmap_latitude');
+			$longitude = noo_get_post_meta(get_the_ID(),'_noo_property_gmap_longitude');
+			wp_enqueue_script('bing-map-api');
+			wp_enqueue_script('bing-map'); ?>
+			<div class="property-map">
+				<h4 class="property-map-title"><?php _e('Location on map','noo')?></h4>
+				<div data-id="noo_property_bing_map" class="noo_property_bing_map" style='width: 100%; height:500px;'>
+					<div id='noo_property_bing_map'></div>
+					<input type="hidden" id="latitude" name="latitude"
+				       value="<?php echo esc_attr($latitude) ?>"/>
+					<input type="hidden" id="longitude" name="longitude"
+					       value="<?php echo esc_attr($longitude); ?>"/>
+				</div>
+			</div>	
+			<?php
+		endif;
+		?>
+	</article> <!-- /#post- -->
+	<?php 
+	rp_addons_nearby_places_yelp_nearby($property_id);
+	rp_addons_nearby_places_walkscore($property_id);
+	 ?>
+	<?php re_property_contact_agent()?>
+	<?php re_similar_property();?>
+<?php endwhile;
