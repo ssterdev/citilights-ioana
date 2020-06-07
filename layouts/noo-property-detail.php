@@ -154,6 +154,7 @@ $property_id = empty( $property_id ) ? get_the_ID() : $property_id;
 								if( function_exists('pll_get_post') ) $property_id = pll_get_post( $property_id );
 							?>
 							<?php foreach ((array)$custom_fields as $field) {
+	
 								if( !isset( $field['name'] ) || empty( $field['name'] )) continue;
 								$field['type'] = isset( $field['type'] ) ? $field['type'] : 'text';
 								$id = re_property_custom_fields_name($field['name']);
@@ -163,16 +164,18 @@ $property_id = empty( $property_id ) ? get_the_ID() : $property_id;
 									if( isset( $field['is_tax'] ) )
 										continue;
 									$id = $field['name'];
+									
 								}
-
+								
 								$value = noo_get_post_meta($property_id,$id,null);
+
 								$args = array(
 										'label_tag' => 'span',
 										'label_class' => 'col-sm-5 detail-field-label',
 										'value_tag' => 'span',
 										'value_class' => 'col-sm-7 detail-field-value'
 									);
-								noo_display_field( $field, $id, $value, $args );
+								noo_display_field( $field, $id, number_format($value), $args );
 							} ?>
 						</div>
 					</div>
