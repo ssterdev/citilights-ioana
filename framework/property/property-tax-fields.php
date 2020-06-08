@@ -101,7 +101,9 @@ if( !function_exists('re_property_render_taxonomy_field') ):
 		$val = isset($_GET[$field_name]) ? $_GET[$field_name] : '';
 		// noo_render_select_field( $field, $field_name, $val, $form_type );
 		$placeholder = $form_type != 'search' ? sprintf( __("%s",'noo'), $label ) : sprintf( __("All %s",'noo'), $label );
-
+		if (substr($placeholder, 4, 3) == 'Loc' ) {
+			$placeholder = "Markets";
+		}
 		$dropdown = wp_dropdown_categories( array( 
 			'taxonomy'          => $taxonomy, 
 			'name'              => $field_name, 
