@@ -154,7 +154,7 @@ $property_id = empty( $property_id ) ? get_the_ID() : $property_id;
 								if( function_exists('pll_get_post') ) $property_id = pll_get_post( $property_id );
 							?>
 							<?php foreach ((array)$custom_fields as $field) {
-	
+								
 								if( !isset( $field['name'] ) || empty( $field['name'] )) continue;
 								$field['type'] = isset( $field['type'] ) ? $field['type'] : 'text';
 								$id = re_property_custom_fields_name($field['name']);
@@ -164,6 +164,7 @@ $property_id = empty( $property_id ) ? get_the_ID() : $property_id;
 									if( isset( $field['is_tax'] ) )
 										continue;
 									$id = $field['name'];
+				
 									
 								}
 								
@@ -175,9 +176,11 @@ $property_id = empty( $property_id ) ? get_the_ID() : $property_id;
 										'value_tag' => 'span',
 										'value_class' => 'col-sm-7 detail-field-value'
 									);
-								if ($id == "_area") {
+								
+								
+								if ($id == "_area" ) {
 								noo_display_field( $field, $id, number_format($value), $args );
-								} else {
+								} elseif ($id != "_noo_property_field_test2" && $id != "_noo_property_field_testfield") {
 									noo_display_field( $field, $id, number_format($value), $args );
 								
 								}
@@ -191,29 +194,53 @@ $property_id = empty( $property_id ) ? get_the_ID() : $property_id;
 						<?php the_content();?>
 					</div>
 				</div>
+				
+			
+				
+				
 			</div>
+				
+		</div>
+		<div class= "sergiu">
+				<table>
+					
+			
+			<?php foreach ((array)$custom_fields as $field) {
+								
+								
+								$id = re_property_custom_fields_name($field['name']);
+							
+								
+								$value = noo_get_post_meta($property_id,$id,null);
+
+								$args = array(
+										'label_tag' => 'td',
+										'label_class' => 'uk-width-2-3 uk-width-1-3@m',
+										'value_tag' => 'td',
+										'value_class' => 'uk-text-right'
+									);
+									if ($id == "_noo_property_field_test2" || $id == "_noo_property_field_testfield") {
+										echo "<tr>";
+									
+									noo_display_field( $field, $id, number_format($value), $args );
+									echo '<td><a href="#/" class="popup uk-margin-remove" data-toggle="popover" data-trigger="hover" title="Popover title" data-content="And here is some amazing content. It is very engaging. Right?"><img src="https://d3ldi349qj6gnw.cloudfront.net/images/details/Question.svg" alt="Zestimate" width="25" height="25"></a></td>';
+										echo "</tr>";
+										
+									}
+									
+							} ?>
+						</table>
+				
+				
+				<script>
+					jQuery(function () {
+					  jQuery('[data-toggle="popover"]').popover({ trigger: "hover" });
+					})
+				</script>
 		</div>
 		<?php if( !empty( $_pdf_file_ids ) ) :
 				echo '<div class="document-container">';
-				echo '<h4 class="document-title">' . esc_html__( 'Document', 'noo' ) . '</h4>';
-					echo '<div class="document-wrap noo-row">';
-					?>
-					<ul>
-						<?php foreach ( $_pdf_file_ids as $_pdf_file_id ) :
-			    			$pdf_file = wp_get_attachment_url( $_pdf_file_id ); 
-			    			
-			    			if( $pdf_file ) : ?>
-					    		<li>
-					    			<a href="<?php echo wp_get_attachment_url( $_pdf_file_id) ?>" target="_blank">
-					    				<?php echo basename(wp_get_attachment_url( $_pdf_file_id)); ?>
-				    				</a>
-				    				<i class="fa fa-download"></i>
-			    				</li>
-			    			<?php  endif;
-		    			endforeach; ?>
-		    		</ul>
-		    		<?php
-		    		echo '</div><!-- /.document-wrap -->';
+				
 	    		echo '</div><!-- /.document-container -->';
     		endif;
     	?>

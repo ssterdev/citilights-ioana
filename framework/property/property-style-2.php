@@ -27,12 +27,19 @@
                 }
                 ?>
             </a>
+			
             <div class="content-thumb-overlay">
+				 
+				
                 <div class="property-action">
+					
                     <div class="action-container">
+						
                         <?php if ( !empty( $social_enabled ) ) : ?>
+						
                             <div class="property-sharing <?php echo $uid = uniqid( 'sharing' ); ?>">
-                                <?php echo re_property_social_share(); ?>
+								
+                                <?php echo  re_property_social_share(); ?>
                             </div>
                         <?php endif; ?>
                         <?php
@@ -49,7 +56,7 @@
                            data-action="compare"
                            data-thumbnail="<?php the_post_thumbnail_url( 'property-floor' ); ?>"
                            data-div="<?php echo esc_attr( $id_compare ); ?>" class="property-action-button fa fa-plus compare-<?php echo get_the_ID(); ?>" aria-hidden="true"></i>
-
+						
                         <?php if( ( re_get_agent_setting('users_can_register', true) && !is_user_logged_in() ) || is_user_logged_in() ) : ?>
 
                             <i title="<?php echo esc_html( $text_favorites ); ?>" data-user="<?php echo $user_id; ?>" data-id="<?php echo get_the_ID(); ?>" data-action="favorites" data-status="<?php echo esc_attr( $class_favorites ); ?>" data-url="<?php echo esc_attr( $property_favorites ); ?>" class="property-action-button fa <?php echo esc_attr( $icon_favorites ); ?>" aria-hidden="true"></i>
@@ -59,10 +66,15 @@
                         <?php if ( !empty( $social_enabled ) ) : ?>
                             <i title="<?php echo esc_html__( 'Share', 'noo' ); ?>" data-user="<?php echo $user_id; ?>" data-id="<?php echo get_the_ID(); ?>" data-action="sharing" data-class="<?php echo esc_attr( $uid ); ?>" class="property-action-button fa fa-share-alt" aria-hidden="true"></i>
                         <?php endif; ?>
+						
                     </div>
+						   
                 </div>
+		    
             </div>
+			
         </div>
+			
         <div class="fp-style-2--wrap">
             <div>
                 <?php 
