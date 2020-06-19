@@ -13,6 +13,37 @@ $property_id = empty( $property_id ) ? get_the_ID() : $property_id;
 
 	?>
 
+
+<?php
+	    if(array_key_exists('button1', $_POST)) { 
+            button1(); 
+        } 
+        else if(array_key_exists('button2', $_POST)) { 
+            button2(); 
+        }  
+		else if(array_key_exists('button3', $_POST)) { 
+            button3(); 
+        }  
+		else if(array_key_exists('button4', $_POST)) { 
+            button4(); 
+        }      
+?>
+<h1>TEST</h1>
+  <form method="post"> 
+        <input type="submit" name="button1"
+                class="button" value="create" /> 
+          
+        <input type="submit" name="button2"
+                class="button" value="excel" /> 
+	  
+	  	<input type="submit" name="button3"
+                class="button" value="modif" /> 
+	  
+	  	<input type="submit" name="button4"
+                class="button" value="afisare" />
+	  
+    </form> 
+
 	<article id="post-<?php the_ID(); ?>" class="property">
 		<div class="property-title-wrap clearfix">
 			<h1 class="property-title">
@@ -164,7 +195,7 @@ $property_id = empty( $property_id ) ? get_the_ID() : $property_id;
 									if( isset( $field['is_tax'] ) )
 										continue;
 									$id = $field['name'];
-				
+									print $id;
 									
 								}
 								
@@ -178,13 +209,14 @@ $property_id = empty( $property_id ) ? get_the_ID() : $property_id;
 									);
 								
 								
-								if ($id == "_area" ) {
-								noo_display_field( $field, $id, number_format($value), $args );
-								} elseif ($id != "_noo_property_field_test2" && $id != "_noo_property_field_testfield") {
-									noo_display_field( $field, $id, number_format($value), $args );
-								
-								}
-							} ?>
+								if ($id == "_area"){
+                                noo_display_field( $field, $id, number_format($value), $args );                        
+                                } elseif ($id == "_noo_property_field_lot_area") {
+                                    noo_display_field( $field, $id, number_format($value), $args );                            
+                                } elseif ($id != "_noo_property_field_strn1" && $id != "_noo_property_field_strn2" && $id != "_noo_property_field_strn3" && $id != "_noo_property_field_strn4" && $id != "_noo_property_field_strn5" && $id != "_noo_property_field_strn6" && $id != "_noo_property_field_ff1" && $id != "_noo_property_field_ff2" && $id != "_noo_property_field_ff3" && $id != "_noo_property_field_ff4") {
+                                    noo_display_field( $field, $id, $value, $args );
+                                }
+                            } ?>
 						</div>
 					</div>
 				</div>
@@ -201,43 +233,149 @@ $property_id = empty( $property_id ) ? get_the_ID() : $property_id;
 			</div>
 				
 		</div>
-		<div class= "sergiu">
-				<table>
-					
-			
-			<?php foreach ((array)$custom_fields as $field) {
-								
-								
-								$id = re_property_custom_fields_name($field['name']);
-							
-								
-								$value = noo_get_post_meta($property_id,$id,null);
-
-								$args = array(
-										'label_tag' => 'td',
-										'label_class' => 'uk-width-2-3 uk-width-1-3@m',
-										'value_tag' => 'td',
-										'value_class' => 'uk-text-right'
-									);
-									if ($id == "_noo_property_field_test2" || $id == "_noo_property_field_testfield") {
-										echo "<tr>";
-									
-									noo_display_field( $field, $id, number_format($value), $args );
-									echo '<td><a href="#/" class="popup uk-margin-remove" data-toggle="popover" data-trigger="hover" title="Popover title" data-content="And here is some amazing content. It is very engaging. Right?"><img src="https://d3ldi349qj6gnw.cloudfront.net/images/details/Question.svg" alt="Zestimate" width="25" height="25"></a></td>';
-										echo "</tr>";
-										
-									}
-									
-							} ?>
-						</table>
-				
-				
-				<script>
-					jQuery(function () {
-					  jQuery('[data-toggle="popover"]').popover({ trigger: "hover" });
-					})
-				</script>
-		</div>
+	   <?php
+        $array = array(
+            "1" => "unu",
+            "2" => "doi",
+            "3" => "Think some of these sellers want too much money? If so, you're right. But what they want and what they get are two different things. Make enough offers, even if they're well below the sellers' asking price, and you'll get some accepted.",
+            "4" => "Most sellers are not experts at determining the cost of repairs. It's best that you visit the property to calculate what your actual cost is likely to be.",
+            "5" => "cinci",
+            "6" => "You can use this figure to quickly find the deals that interest you. It is not meant to be an estimate or guarantee of your profits if you buy the property. It does not factor in closing costs, carrying costs, Realtor fees, etc. We do not include these amounts because they are different for each investor and for each buying and selling strategy.",
+        );
+        $array_title = array(
+            "1" => "unu",
+            "2" => "doi",
+            "3" => "Seller's Asking Price",
+            "4" => "Estimated Cost of Repairs",
+            "5" => "cinci",
+            "6" => "Estimated Equity Spread",
+        );
+        $counter = 1;
+        ?>
+        <div class= "sergiu">
+            <h4 class="font_2">
+            Short term rental numbers
+            </h4>
+                <table>
+                   
+           
+            <?php foreach ((array)$custom_fields as $field) {
+                               
+                               
+                                $id = re_property_custom_fields_name($field['name']);
+                           
+                               
+                                $value = noo_get_post_meta($property_id,$id,null);
+ 
+                                $args = array(
+                                        'label_tag' => 'td',
+                                        'label_class' => 'sergiu_label',
+                                        'value_tag' => 'td',
+                                        'value_class' => 'sergiu_val'
+                                    );
+                                    if ($id == "_noo_property_field_strn1" || $id == "_noo_property_field_strn2" || $id == "_noo_property_field_strn3" || $id == "_noo_property_field_strn4" || $id == "_noo_property_field_strn5" || $id == "_noo_property_field_strn6") {
+                                       
+                                       
+                                        echo "<tr>";
+                                   
+                                    noo_display_field( $field, $id, $value, $args );
+                                    echo '<td><a href="#/" class="sergiu_badge" data-toggle="popover" data-trigger="hover" title="'.$array_title[$counter].'" data-content="'.$array[$counter].'"><img src="https://d3ldi349qj6gnw.cloudfront.net/images/details/Question.svg" alt="Zestimate" width="25" height="25"></a></td>';
+                                        echo "</tr>";
+                                        $counter++;
+                                    }
+                                   
+                            } ?>
+                   
+                   
+                   
+                        </table>
+               
+               
+                <script>
+                    jQuery(function () {
+                      jQuery('[data-toggle="popover"]').popover({ trigger: "hover" });
+                    })
+                </script>
+        </div>
+       
+            <?php
+        $array1 = array(
+            "1" => "Some sellers are truthful about the After Repaired Values. Some sellers exaggerate. It's best that you ignore the sellers' repair and ARV estimates and draw your own conclusions. And then make them an offer based on YOUR numbers, even if your offer is $10,000 less than their asking price. That's what the successful members of myHouseDeals.com are doing. They don't give up on these deals just because one or more sellers exaggerate their numbers. They make offers.",
+            "2" => "Think some of these sellers want too much money? If so, you're right. But what they want and what they get are two different things. Make enough offers, even if they're well below the sellers' asking price, and you'll get some accepted.",
+            "3" => "Most sellers are not experts at determining the cost of repairs. It's best that you visit the property to calculate what your actual cost is likely to be.",
+            "4" => "You can use this figure to quickly find the deals that interest you. It is not meant to be an estimate or guarantee of your profits if you buy the property. It does not factor in closing costs, carrying costs, Realtor fees, etc. We do not include these amounts because they are different for each investor and for each buying and selling strategy.",
+           
+        );
+        $array_title1 = array(
+            "1" => "Est. After Repair Value (ARV)",
+            "2" => "Seller's Asking Price",
+            "3" => "Estimated Cost of Repairs",
+            "4" => "Estimated Equity Spread",
+           
+        );
+        $counter1 = 1;
+        ?>
+       
+        <div class = "sergiu2">
+            <h4 class="font_2">
+            Fix & Flip numbers
+            </h4>
+            <table>
+               
+                    <?php foreach ((array)$custom_fields as $field) {
+                               
+                               
+                                $id = re_property_custom_fields_name($field['name']);
+                           
+                               
+                                $value = noo_get_post_meta($property_id,$id,null);
+ 
+                                $args = array(
+                                        'label_tag' => 'td',
+                                        'label_class' => 'sergiu_label',
+                                        'value_tag' => 'td',
+                                        'value_class' => 'sergiu_val'
+                                    );
+                                   
+                                    if ($id == "_noo_property_field_ff1" || $id == "_noo_property_field_ff2" || $id == "_noo_property_field_ff3" || $id == "_noo_property_field_ff4") {
+                                       
+                                        echo "<tr>";
+                                   
+                                    noo_display_field( $field, $id, $value, $args );
+                                    echo '<td><a href="#/" class="sergiu_badge" data-toggle="popover" data-trigger="hover" title="'.$array_title1[$counter1].'" data-content="'.$array1[$counter1].'"><img src="https://d3ldi349qj6gnw.cloudfront.net/images/details/Question.svg" alt="Zestimate" width="25" height="25"></a></td>';
+                                        echo "</tr>";
+                                        $counter1++;
+                                       
+                                    }
+                                   
+                            } ?>
+            </table>
+           
+        </div>
+       
+        <div class="sergiu3">
+           
+            <table>
+                <tr>
+                <td id= "sergiu_funding" class= "sergiu_need_funding"> Need funding: </td>
+                <td>
+                <a data-fancybox-type="iframe" href="https://wp.me/PbTAzN-3zW" id="noo-button-1" class="btn btn-primary"> Get Pre-Qualified</a>   
+                   
+                </td>
+                </tr>
+                <tr>
+                <td>
+                </td>
+                    <td>
+                    <a data-fancybox-type="iframe" href="https://wp.me/PbTAzN-3z1" id="" class=""> View Other Funding Options</a>  
+                    </td>
+                </tr>
+            </table>
+            <p class = "sergiu_paragraph">
+               
+            This information is provided by the seller. All numbers, including Estimated After Repair Value (ARV) and Estimated Cost of Repairs are estimates. Please do your own due diligence.</p>
+        </div>
+   
 		<?php if( !empty( $_pdf_file_ids ) ) :
 				echo '<div class="document-container">';
 				

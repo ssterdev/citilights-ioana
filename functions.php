@@ -206,3 +206,100 @@ if ( ! function_exists( 'noo_get_video' ) ) :
     }
 
 endif;
+
+
+function button1() {            						
+		$post_title="AVA High Line";
+		$post_content="Acesta este un titlu";
+		$post_author="root";
+		$post_categories="Uncategorized";
+
+		$check_title=get_page_by_title($post_title, 'OBJECT', 'post');
+
+		//also var_dump($check_title) for testing only
+	
+		if (empty($check_title) ){
+			$my_post = array(
+			  'post_title'    => $post_title,
+			  'post_type' => 'noo_property',
+			  'post_content'  => $post_content,
+			  'post_status'   => 'publish',
+			  'post_author'   => $post_author,
+			  'post_category' => $post_categories,
+			  'property_location' => 'New York',
+			  '_noo_property_field_ff1' => 'test',
+			  'fields' => array(						
+						array(
+								'id' => '_address',
+								'label' => 'test222',
+								'type' => 'text',
+						),
+			  )
+			);
+
+			wp_insert_post( $my_post );
+		} else {
+			$my_post = array(
+
+			  'ID' =>  $check_title->ID,
+			  'post_type' => 'noo_property',
+			  'post_title'    => $post_title,
+			  'post_content'  => $post_content,
+			  'post_status'   => 'publish',
+			  'post_author'   => $post_author,
+			  'post_category' => $post_categories
+			  
+			);
+			
+			wp_update_post( $my_post );
+		}
+} 
+
+
+function button2() { 
+        $fileHandle = fopen("/srv/http/wordpress/wp-content/themes/noo-citilights/_Listings.csv", "r");
+
+		//Loop through the CSV rows.
+		while (($row = fgetcsv($fileHandle, 0, ",")) !== FALSE) {
+			//Print out my column data.
+			
+			echo 'Listing URL: ' . $row[0] . '<br>';
+			echo 'Listing Email: ' . $row[1] . '<br>';
+			echo 'Listing Phone #: ' . $row[2] . '<br>';
+			echo 'WhatsApp / Social Media: ' . $row[3] . '<br>';
+			echo 'Email Address: ' . $row[4] . '<br>';
+			echo 'Name: ' . $row[5] . '<br>';
+			echo 'Address: ' . $row[6] . '<br>';
+			echo 'Company Name: ' . $row[7] . '<br>';
+			echo 'Date of Posting: ' . $row[8] . '<br>';
+			echo 'Website Source: ' . $row[9] . '<br>';
+			echo 'Fully Furnished: ' . $row[10] . '<br>';
+			echo 'Listing Title: ' . $row[11] . '<br>';
+			echo 'Lead Type: ' . $row[12] . '<br>';
+			echo 'Lead Type (with icons only - blue borders): ' . $row[13] . '<br>';
+			echo 'Listing Description (DO NOT INCLUDE ADDRESS): ' . $row[14] . '<br>';
+			echo 'ARV: ' . $row[15] . '<br>';
+			echo 'SAP: ' . $row[16] . '<br>';
+			echo '<br>';
+		}
+} 
+
+function button3() {
+		$property_id = 5939;
+		
+		$newvalue = 1900329055052;
+		update_post_meta( $property_id , '_noo_property_field_strn5', $newvalue,$prev_value = '' );	
+		//$test = get_post_meta( $property_id, '_noo_property_field_strn5', true );
+		/*
+		//foreach ($test as $key => $value) {
+    	// $arr[3] will be updated with each value from $arr...
+    	//echo "{$key} => {$value} ";
+    	//print_r($test);
+}
+	*/
+}
+
+function button4() {
+$property_id = 5939;
+echo get_post_meta( $property_id, '_noo_property_field_strn5', true );
+}

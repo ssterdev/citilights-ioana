@@ -23541,4 +23541,126 @@ body.noo-cover-body:before {
     display: none;
 }
 
-
+.sergiu {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e5e5e5;
+}
+ 
+.sergiu td{
+    padding: 5px 12px;
+    vertical-align: middle !important;
+    box-sizing: border-box;
+    max-width: 70%;
+    display: table-cell;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: "Poppins",sans-serif;
+   
+   
+}
+ 
+.sergiu h4{
+    background-image: url(https://d3ldi349qj6gnw.cloudfront.net/images/details/NumbersIcon.svg);
+    background-size: 35px 35px;
+    padding: 15px 45px;
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+.sergiu2 {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e5e5e5;
+}
+ 
+.sergiu2 td{
+    padding: 5px 12px;
+    vertical-align: middle !important;
+    box-sizing: border-box;
+    max-width: 70%;
+    display: table-cell;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: "Poppins",sans-serif;
+   
+   
+}
+ 
+.sergiu2 h4{
+    background-image: url(https://d3ldi349qj6gnw.cloudfront.net/images/details/NumbersIcon.svg);
+    background-size: 35px 35px;
+    padding: 15px 45px;
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+.sergiu3 {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e5e5e5;
+}
+ 
+.sergiu3 td{
+    padding: 5px 12px;
+    vertical-align: middle !important;
+    box-sizing: border-box;
+    max-width: 70%;
+    display: table-cell;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: "Poppins",sans-serif;
+    width:20%;
+   
+}
+ 
+.sergiu table{
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    border-spacing: 2px;
+    border-color: grey
+}
+ 
+.sergiu2 table{
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    border-spacing: 2px;
+    border-color: grey
+}
+.sergiu3 table{
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    border-spacing: 2px;
+    border-color: grey
+}
+ 
+.sergiu_val {
+   
+    width:20%;
+}
+ 
+.sergiu_need_funding {
+   
+    font-weight: 700;
+}
+ 
+.sergiu_paragraph {
+    color: #898989 !important;
+    margin-bottom: 0;
+    font-size: 1.300rem !important;
+    margin-left: 2% !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    line-height: 1.5;
+    width: 75%;
+    box-sizing: border-box;
+    max-width: 100%;
+    font-family: "Poppins",sans-serif;
+    margin-top: 20px;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;animation
+}
