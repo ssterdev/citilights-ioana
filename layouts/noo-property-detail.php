@@ -426,15 +426,19 @@ function sam_click()
                 <tr>
                 <td id= "sergiu_funding" class= "sergiu_need_funding"> Need funding: </td>
                 <td>
-                <a data-fancybox-type="iframe" href="https://wp.me/PbTAzN-3zW" id="noo-button-1" class="btn btn-primary"> Get Pre-Qualified</a>   
                    
+                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Get Pre-Qualified
+</button>  
                 </td>
                 </tr>
                 <tr>
                 <td>
                 </td>
                     <td>
-                    <a data-fancybox-type="iframe" href="https://wp.me/PbTAzN-3z1" id="" class=""> View Other Funding Options</a>  
+                   <a href="#" data-fancybox-type="iframe" data-toggle="modal" data-target="#exampleModalCenter2">
+  View Other Funding Options
+</a> 
                     </td>
                 </tr>
             </table>
@@ -576,6 +580,158 @@ function sam_click()
 		endif;
 		?>
 	</article> <!-- /#post- -->
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div id= "modal-sergiu" class="modal-dialog modal-dialog-centered" role="document">
+    <div id="modal-sergiu-content" class="modal-content">
+      <div id= "modal-header-sergiu" class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Get Funding</h5>
+        <button id="sergiu-button-modal-close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <div class="row">
+			
+			<div class="noo-main col-md-12  noo-page" role="main">
+				<!-- Begin The loop -->
+																														
+																			
+<p>&nbsp;</p>
+<h4 class="uk-text-center" style="text-align: center;"><strong>Ready to get funding for your deal? Get lenders competing to finance your deal and get the best rate available anywhere.</strong></h4>
+<p style="text-align: center;">Answer a few quick questions and get contacted by lenders who are ready and willing to fund your deal fast. To get started, select your investment strategy below:</p>
+<p>&nbsp;</p>
+<h4 class="uk-margin-bottom uk-margin-top uk-text-center" style="text-align: center;"><strong>What’s your investment strategy?</strong></h4>
+<div class="uk-child-width-1-3@s uk-grid-small uk-margin-bottom uk-text-center uk-grid">
+<h4 class="uk-first-column" style="text-align: center;"></h4>
+<div class="">
+<table width="1162"style="
+    width: auto;">
+<tbody>
+<tr>
+<td width="387">
+<p style="text-align: center;"><strong><a href="https://wp.me/PbTAzN-3Aj"><img class="aligncenter wp-image-13765 size-full" src="https://hyperionbnb.com/wp-content/uploads/2020/06/buy-hold.png" alt="" width="126" height="126"></a>Buy &amp; Hold</strong></p>
+</td>
+<td style="text-align: center;" width="387"><strong><a href="https://wp.me/PbTAzN-3Aj"><img class="aligncenter wp-image-13766 size-full" src="https://hyperionbnb.com/wp-content/uploads/2020/06/fix-flip.png" alt="" width="126" height="126"></a>Fix &amp; Flip</strong></td>
+<td style="text-align: center;" width="387"><strong><a href="https://wp.me/PbTAzN-3Aj"><img class="aligncenter wp-image-13767 size-full" src="https://hyperionbnb.com/wp-content/uploads/2020/06/both.png" alt="" width="126" height="126"></a>A little bit of both</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+													<!-- End The loop -->
+			</div> <!-- /.main -->
+		</div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<!-- Button trigger modal -->
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div id= "modal-sergiu-2" class="modal-dialog modal-dialog-centered" role="document">
+    <div id="modal-sergiu-content" class="modal-content">
+      <div id= "modal-header-sergiu" class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Funding options</h5>
+        <button id="sergiu-button-modal-close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    <div class="row">
+			
+			<div class="noo-main col-md-12  noo-page" role="main">
+				<!-- Begin The loop -->
+																														<h1 class="page-title"></h1>
+																			<h2 style="text-align: center;">View Other Funding Options</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table>
+<tbody>
+<tr>
+<td width="497">
+<h4><img class="wp-image-13708 alignleft" src="https://hyperionbnb.com/wp-content/uploads/2020/06/hard-money-150x150.png" alt="" width="100" height="100">Hard Money</h4>
+<p>Borrow from a Hard Money lender. These loans are easier to quality for, have low rates and fees, and close in as little as 4 days.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p></td>
+<td width="60">
+<h4></h4>
+</td>
+<td width="542">
+<h4><img class="wp-image-13710 alignleft" src="https://hyperionbnb.com/wp-content/uploads/2020/06/crowdfunding-150x150.png" alt="" width="100" height="100" srcset="https://hyperionbnb.com/wp-content/uploads/2020/06/crowdfunding-150x150.png 150w, https://hyperionbnb.com/wp-content/uploads/2020/06/crowdfunding-300x300.png 300w, https://hyperionbnb.com/wp-content/uploads/2020/06/crowdfunding-200x200.png 200w, https://hyperionbnb.com/wp-content/uploads/2020/06/crowdfunding.png 350w" sizes="(max-width: 100px) 100vw, 100px">Crowdfunding</h4>
+<p>Borrow up to 80% of the ARV with no origination fees up front. Crowdfunding is faster and more flexible than traditional funding, and less money is needed to close.</p>
+<p>&nbsp;</p></td>
+</tr>
+<tr>
+<td width="497">
+<h4><img class="wp-image-13711 alignleft" src="https://hyperionbnb.com/wp-content/uploads/2020/06/long-term-loans-150x150.png" alt="" width="100" height="100" srcset="https://hyperionbnb.com/wp-content/uploads/2020/06/long-term-loans-150x150.png 150w, https://hyperionbnb.com/wp-content/uploads/2020/06/long-term-loans-300x300.png 300w, https://hyperionbnb.com/wp-content/uploads/2020/06/long-term-loans-200x200.png 200w, https://hyperionbnb.com/wp-content/uploads/2020/06/long-term-loans.png 350w" sizes="(max-width: 100px) 100vw, 100px">Long–Term Loans</h4>
+<p>Take out a traditional long-term loan from a mortgage company or bank.</p>
+<p>&nbsp;</p></td>
+<td width="60">
+<h4></h4>
+</td>
+<td width="542">
+<h4><img class="wp-image-13713 alignleft" src="https://hyperionbnb.com/wp-content/uploads/2020/06/private-money-150x150.png" alt="" width="100" height="100" srcset="https://hyperionbnb.com/wp-content/uploads/2020/06/private-money-150x150.png 150w, https://hyperionbnb.com/wp-content/uploads/2020/06/private-money-300x300.png 300w, https://hyperionbnb.com/wp-content/uploads/2020/06/private-money-200x200.png 200w, https://hyperionbnb.com/wp-content/uploads/2020/06/private-money.png 350w" sizes="(max-width: 100px) 100vw, 100px">Private Money</h4>
+<p>Borrow money from a private lender. Each private lender is different, but these individuals typically offer lower rates than hard money lenders, and more flexible terms.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p></td>
+</tr>
+<tr>
+<td width="497">
+<h4><img class="wp-image-13714 alignleft" src="https://hyperionbnb.com/wp-content/uploads/2020/06/your-own-cash-150x150.png" alt="" width="100" height="100" srcset="https://hyperionbnb.com/wp-content/uploads/2020/06/your-own-cash-150x150.png 150w, https://hyperionbnb.com/wp-content/uploads/2020/06/your-own-cash-300x300.png 300w, https://hyperionbnb.com/wp-content/uploads/2020/06/your-own-cash-200x200.png 200w, https://hyperionbnb.com/wp-content/uploads/2020/06/your-own-cash.png 350w" sizes="(max-width: 100px) 100vw, 100px">Your Own Cash</h4>
+<p>Use your own cash. Those who have cash generally prefer this method because it eliminates borrowing costs and speeds up the closing process.</p>
+<p>&nbsp;</p></td>
+<td width="60">
+<h4></h4>
+</td>
+<td width="542">
+<h4><img class="wp-image-13715 alignleft" src="https://hyperionbnb.com/wp-content/uploads/2020/06/somone-elses-cash-150x150.png" alt="" width="100" height="100" srcset="https://hyperionbnb.com/wp-content/uploads/2020/06/somone-elses-cash-150x150.png 150w, https://hyperionbnb.com/wp-content/uploads/2020/06/somone-elses-cash-300x300.png 300w, https://hyperionbnb.com/wp-content/uploads/2020/06/somone-elses-cash-200x200.png 200w, https://hyperionbnb.com/wp-content/uploads/2020/06/somone-elses-cash.png 350w" sizes="(max-width: 100px) 100vw, 100px">Someone Else’s Cash</h4>
+<p>Bring another individual into the deal who will either partner with you or be your private lender. Partners receive a portion of your profits.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p></td>
+</tr>
+<tr>
+<td width="497">
+<table>
+<tbody>
+<tr>
+<td width="504">
+<h4><img class="wp-image-13716 alignleft" src="https://hyperionbnb.com/wp-content/uploads/2020/06/take-over-payments-150x150.png" alt="" width="100" height="100" srcset="https://hyperionbnb.com/wp-content/uploads/2020/06/take-over-payments-150x150.png 150w, https://hyperionbnb.com/wp-content/uploads/2020/06/take-over-payments-300x300.png 300w, https://hyperionbnb.com/wp-content/uploads/2020/06/take-over-payments-200x200.png 200w, https://hyperionbnb.com/wp-content/uploads/2020/06/take-over-payments.png 350w" sizes="(max-width: 100px) 100vw, 100px">Take Over Payments</h4>
+<p>Take over the existing mortgage “Subject To” the existing financing. This is much more likely to be effective for motivated seller leads as opposed to wholesale deals.</p>
+<p>&nbsp;</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td width="60">
+<h4></h4>
+</td>
+<td width="542">
+<h4><img class="wp-image-13718 alignleft" src="https://hyperionbnb.com/wp-content/uploads/2020/06/no-money-needed-150x150.png" alt="" width="100" height="100" srcset="https://hyperionbnb.com/wp-content/uploads/2020/06/no-money-needed-150x150.png 150w, https://hyperionbnb.com/wp-content/uploads/2020/06/no-money-needed-300x300.png 300w, https://hyperionbnb.com/wp-content/uploads/2020/06/no-money-needed-200x200.png 200w, https://hyperionbnb.com/wp-content/uploads/2020/06/no-money-needed.png 350w" sizes="(max-width: 100px) 100vw, 100px">No Money Needed</h4>
+<p>If you primarily pursue motivated seller leads and your plan is to wholesale those properties, then you don’t need cash or financing.</p>
+<p>&nbsp;</p></td>
+</tr>
+</tbody>
+</table>
+													<!-- End The loop -->
+			</div> <!-- /.main -->
+		</div>
+      </div>
+      
+    </div>
+  </div>
+</div>
 	<?php 
 	rp_addons_nearby_places_yelp_nearby($property_id);
 	rp_addons_nearby_places_walkscore($property_id);

@@ -23761,3 +23761,68 @@ body.noo-cover-body:before {
 .sergiu-rounded-wrap {
 	text-align: center;
 }
+
+#modal-sergiu {
+	max-width: 500px;
+    margin: 1.75rem auto;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    min-height: calc(100% - (.5rem * 2));
+	
+}
+
+#modal-sergiu-content {
+	position: relative;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .3rem;
+    outline: 0;
+}
+
+#modal-header-sergiu {
+	background: #ddd;
+	
+    -webkit-box-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #ffffff;
+    border-top-left-radius: .3rem;
+    border-top-right-radius: .3rem;
+}
+
+#exampleModalLongTitle {
+	font-weight: 600;
+	font-size: 25px;
+}
+
+#sergiu-button-modal-close{
+	margin-top: -30px;
+}
+
+#modal-sergiu-2 {
+	
+	top: 173px;
+    left: 30%;
+    opacity: 1;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    display: block;
+    vertical-align: top;
+    padding: 0px;
+    position: relative;
+    overflow: auto;
+    width: 800px;
+    height: 600px;
+	max-width: 800px;
+}
