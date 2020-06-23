@@ -208,13 +208,14 @@ if ( ! function_exists( 'noo_get_video' ) ) :
 endif;
 
 
-function button1() {            						
+function button1() { 
+		$newvalue = "$4222221,213";
 		$post_title="AVA High Line";
-		$post_content="Acesta este un titlu";
-		$post_author="root";
-		$post_categories="Uncategorized";
+		//$post_content="Acesta este un titlu";
+		//$post_author="root";
+		//$post_categories="Uncategorized";
 
-		$check_title=get_page_by_title($post_title, 'OBJECT', 'post');
+		$check_title=get_page_by_title($post_title, 'OBJECT', 'noo_property');
 
 		//also var_dump($check_title) for testing only
 	
@@ -222,19 +223,12 @@ function button1() {
 			$my_post = array(
 			  'post_title'    => $post_title,
 			  'post_type' => 'noo_property',
-			  'post_content'  => $post_content,
+			  //'post_content'  => $post_content,
 			  'post_status'   => 'publish',
-			  'post_author'   => $post_author,
-			  'post_category' => $post_categories,
-			  'property_location' => 'New York',
-			  '_noo_property_field_ff1' => 'test',
-			  'fields' => array(						
-						array(
-								'id' => '_address',
-								'label' => 'test222',
-								'type' => 'text',
-						),
-			  )
+			  //'post_author'   => $post_author,
+			  //'post_category' => $post_categories,
+			  //'property_location' => 'New York',
+			  
 			);
 
 			wp_insert_post( $my_post );
@@ -244,14 +238,18 @@ function button1() {
 			  'ID' =>  $check_title->ID,
 			  'post_type' => 'noo_property',
 			  'post_title'    => $post_title,
-			  'post_content'  => $post_content,
+			 // 'post_content'  => $post_content,
 			  'post_status'   => 'publish',
-			  'post_author'   => $post_author,
-			  'post_category' => $post_categories
-			  
+			  //'post_author'   => $post_author,
+			 //'post_category' => $post_categories
+			
 			);
 			
 			wp_update_post( $my_post );
+					if ( ! add_post_meta( $check_title->ID, '_noo_property_field_strn5', $newvalue, true ) ) { 
+ 				    
+					update_post_meta( $check_title->ID , '_noo_property_field_strn5', $newvalue ,$prev_value = '' );	
+					}
 		}
 } 
 
@@ -275,6 +273,42 @@ function button2() {
 			echo 'Website Source: ' . $row[9] . '<br>';
 			echo 'Fully Furnished: ' . $row[10] . '<br>';
 			echo 'Listing Title: ' . $row[11] . '<br>';
+			$post_title= $row[11];
+			$check_title=get_page_by_title($post_title, 'OBJECT', 'noo_property');
+			//also var_dump($check_title) for testing only
+	
+		if (empty($check_title) ){
+			$my_post = array(
+			  'post_title'    => $post_title,
+			  'post_type' => 'noo_property',
+			  //'post_content'  => $post_content,
+			  'post_status'   => 'publish',
+			  //'post_author'   => $post_author,
+			  //'post_category' => $post_categories,
+			  //'property_location' => 'New York',
+			  
+			);
+
+			wp_insert_post( $my_post );
+		} else {
+			$my_post = array(
+
+			  'ID' =>  $check_title->ID,
+			  'post_type' => 'noo_property',
+			  'post_title'    => $post_title,
+			 // 'post_content'  => $post_content,
+			  'post_status'   => 'publish',
+			  //'post_author'   => $post_author,
+			 //'post_category' => $post_categories
+			
+			);
+			
+			wp_update_post( $my_post );
+					if ( ! add_post_meta( $check_title->ID, '_noo_property_field_strn5', $row[27], true ) ) { 
+ 				    
+					update_post_meta( $check_title->ID , '_noo_property_field_strn5', $row[27] ,$prev_value = '' );	
+					}
+		}
 			echo 'Lead Type: ' . $row[12] . '<br>';
 			echo 'Lead Type (with icons only - blue borders): ' . $row[13] . '<br>';
 			echo 'Listing Description (DO NOT INCLUDE ADDRESS): ' . $row[14] . '<br>';
@@ -285,10 +319,12 @@ function button2() {
 } 
 
 function button3() {
-		$property_id = 5939;
+		$property_id = 12065;
 		
-		$newvalue = 1900329055052;
-		update_post_meta( $property_id , '_noo_property_field_strn5', $newvalue,$prev_value = '' );	
+		$newvalue = "$41,213";
+		if ( ! add_post_meta( $property_id, '_noo_property_field_strn5', $newvalue, true ) ) { 
+ 
+		update_post_meta( $property_id , '_noo_property_field_strn5', $newvalue ,$prev_value = '' );	
 		//$test = get_post_meta( $property_id, '_noo_property_field_strn5', true );
 		/*
 		//foreach ($test as $key => $value) {
@@ -297,9 +333,58 @@ function button3() {
     	//print_r($test);
 }
 	*/
+		}
 }
 
 function button4() {
-$property_id = 5939;
+$post_title = 'AVA High sLine';
+$titlu = get_page_by_title($post_title, 'OBJECT', 'noo_property');
+print_r ($titlu);
+
+$property_id = 12065;
 echo get_post_meta( $property_id, '_noo_property_field_strn5', true );
 }
+
+function button5() {
+	
+	
+	
+	$property_id = 12065;
+	$value = 59200;
+	echo add_post_meta( $property_id, '_noo_property_field_strn52', $value, true);
+	
+	// not working, returning 4 number digit (sometimes it increments every time I press button);
+}
+	
+ 
+function trimitere_mail ($input1){
+	 
+
+	if(isset($_POST['sub'])) {
+	$to = "sster@pm.me";
+	$mailid=$_POST['txtSubject'];
+	$message=$_POST['txtMailBody'];
+	echo $input1;
+	//
+	//$mailid='test';
+	//$message='test2';
+	//sending mail
+
+
+				   if(wp_mail($to, $mailid, $message))
+				   {
+
+						$new_url = add_query_arg( 'success', 1, get_permalink() );
+						wp_redirect( $new_url, 303 );
+						exit;
+				   }
+				   else
+				   {
+					 echo "Email failed !";
+				   }
+	}
+				   
+}
+
+
+

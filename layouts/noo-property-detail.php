@@ -26,9 +26,12 @@ $property_id = empty( $property_id ) ? get_the_ID() : $property_id;
         }  
 		else if(array_key_exists('button4', $_POST)) { 
             button4(); 
-        }      
+        } 
+		else if(array_key_exists('button5', $_POST)) {
+			button5();
+		}
 ?>
-<h1>TEST</h1>
+<!--
   <form method="post"> 
         <input type="submit" name="button1"
                 class="button" value="create" /> 
@@ -37,12 +40,16 @@ $property_id = empty( $property_id ) ? get_the_ID() : $property_id;
                 class="button" value="excel" /> 
 	  
 	  	<input type="submit" name="button3"
-                class="button" value="modif" /> 
+                class="button" value="update_post_meta" /> 
 	  
 	  	<input type="submit" name="button4"
-                class="button" value="afisare" />
+                class="button" value="get_post_meta" />
+	  	<input type="submit" name="button5"
+                class="button" value="add_post_meta" />
 	  
     </form> 
+-->
+
 
 	<article id="post-<?php the_ID(); ?>" class="property">
 		<div class="property-title-wrap clearfix">
@@ -195,7 +202,7 @@ $property_id = empty( $property_id ) ? get_the_ID() : $property_id;
 									if( isset( $field['is_tax'] ) )
 										continue;
 									$id = $field['name'];
-									print $id;
+									
 									
 								}
 								
@@ -233,6 +240,66 @@ $property_id = empty( $property_id ) ? get_the_ID() : $property_id;
 			</div>
 				
 		</div>
+
+
+		
+<script type="text/javascript">
+function sam_click()
+{
+
+	var x="<?php trimitere_mail(test); ?>";
+	alert(x);
+	
+}
+	
+
+</script>
+		
+			
+
+	<div class = "sergiu-collapse-btn">
+		<div class = "collapse-wrap">
+	
+		<p>
+  
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Contact Owner
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <form id="frminvestormail" action="#" method="post" onsubmit="return sam_click();" class="" style="display: block;">
+                                                        <input type="hidden" name="ContactEmail" id="ContactEmail">
+                                                        <p class="uk-margin-small uk-text-small"><strong>Subject</strong></p>
+                                                        <input type="text" name="txtSubject" value="7900 Westheimer Rd 120" class="sergiu-uk-input uk-display-block rounded uk-text-small">
+
+                                                        <p class="uk-margin-small uk-text-small"><strong>Body</strong></p>
+                                                        <textarea id="txtMailBody" name="txtMailBody" rows="4" cols="10" class="sergiu-uk-textarea rounded uk-text-small" onfocus="replaceMessage(this);" onblur="replaceMessage(this);" placeholder="Type your message here..."></textarea>
+
+                                                        <input type="hidden" name="property" value="WD176924">
+	  													<div class="sergiu-rounded-wrap">
+															
+	  
+                                                        <input type="submit" onclick="" name="sub" value="Submit Message" class="sergiu-rounded uk-display-inline-block alt-blue uk-button-large btn-submit uk-margin-auto uk-width-1-1 uk-text-center uk-margin-top">
+</div>
+                                                        <div class="SuccessMessage uk-text-small uk-margin-top">
+                                                        
+                                                            <!-- <strong>Note:</strong> The footer of your email will read, "<em>The person who sent you this message is a free member. They have not chosen to pay for a Premium Membership, so they may or may not be a serious investor.</em>"<br /><br /> -->
+                                                            <p><a href="/account/upgrade/step1.asp?leadtype=1&amp;propertyId=176924">Upgrade to Premium now</a>, and it will read, "<em>The person who sent you this email is a Premium Member, meaning that he or she pays to access the properties before other investors. This person is clearly serious about their investing.</em>"</p>
+
+                                                            <p>The recipient will reply to the email address that you have on file in the "My Account" section.</p>
+
+                                                            <p>Use this form for property-specific inquiries only. No solicitations allowed. All messages are scanned for inappropriate content.</p>
+                                                        
+                                                        </div>
+                                                    </form>
+	
+	
+	
+</div>
+		</div>
+		</div>	
+		
+		
 	   <?php
         $array = array(
             "1" => "unu",
