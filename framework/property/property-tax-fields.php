@@ -118,7 +118,27 @@ if( !function_exists('re_property_render_taxonomy_field') ):
 			'walker'            => new NooPropertyFilterDropdown, 
 			'echo'              => false, 
 		) );
-		echo str_replace('<select', '<select ' . 'data-placeholder="' . $placeholder . '"', $dropdown);
+		if ($placeholder == 'Markets'){
+				$dropdown = wp_dropdown_categories( array( 
+			'taxonomy'          => $taxonomy, 
+			'name'              => $field_name, 
+			'hierarchical'      => true, 
+			'hide_empty'        => $form_type == 'search', 
+			'value_field'       => 'slug', 
+			'selected'          => $val, 
+			'class'             => 'form-control form-control-chosen ignore-valid' . esc_attr( $class_chosen ), 
+			'show_option_none'  => 'All Markets', 
+			'option_none_value' => '', 
+			'orderby'			=> 'name',
+			'walker'            => new NooPropertyFilterDropdown, 
+			'echo'              => false, 
+					
+		) );
+		echo str_replace('<select ' , '<select ' . ' multiple="multiple"   multiple  data-placeholder="' . $placeholder . '"', $dropdown);
+			
+		} else {
+			echo str_replace('<select ' , '<select ' . 'data-placeholder="' . $placeholder . '"', $dropdown);
+		}
 	}
 endif;
 

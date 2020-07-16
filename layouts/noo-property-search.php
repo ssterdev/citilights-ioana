@@ -1,4 +1,3 @@
-
 	<div class="gsearch property" >
 		<?php if( !$no_search_container ) : ?>
 		<div class="container-boxed">

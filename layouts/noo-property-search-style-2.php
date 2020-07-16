@@ -6,6 +6,17 @@
  * Time: 9:16 AM
  */
 ?>
+
+
+<script type="text/javascript">
+    $(function () {
+    	$('.sergiu-search-select').selectpicker();
+	
+		  
+	});
+</script>
+
+
 	<div class="gsearch property flex-column" style="background: rgba(0,0,0,0); min-height: <?php echo $map_height?>px;">
 		<?php if( !$no_search_container ) : ?>
 		<div class="container-boxed">
@@ -111,4 +122,6 @@
         })
 
     })
-</Script>
+</script>
+
+

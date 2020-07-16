@@ -1,3 +1,4 @@
+
 <?php 
 $current_user       = wp_get_current_user();
 $user_id            = $current_user->ID;
@@ -12,7 +13,6 @@ $property_id = empty( $property_id ) ? get_the_ID() : $property_id;
 	$icon_favorites     = $check_is_favorites ? 'fa-heart' : 'fa-heart-o';
 
 	?>
-
 
 <?php
 	    if(array_key_exists('button1', $_POST)) { 
